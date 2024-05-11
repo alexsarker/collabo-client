@@ -20,7 +20,7 @@ const Register = () => {
         <div className="hero-content text-center">
           <div className="max-w-2xl">
             <div className="hero pb-24">
-              <div className="py-12 px-16 border bg-white rounded-xl">
+              <div className="py-12 px-16 border bg-white shadow-md rounded-xl">
                 <div className="text-left pb-4">
                   <h1 className="text-4xl font-medium pb-4">Get Started Now</h1>
                 </div>
