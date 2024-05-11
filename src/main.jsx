@@ -8,6 +8,8 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import CreatePage from "./Pages/CreatePage";
+import UpdatePage from "./Pages/UpdatePage";
+import SubmitPage from "./Pages/SubmitPage";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +30,16 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/create",
+        path: "/createPage",
         element: <CreatePage />,
+      },
+      {
+        path: "/updatePage",
+        element: <UpdatePage />,
+      },
+      {
+        path: "/submitPage",
+        element: <SubmitPage />,
       },
     ],
   },

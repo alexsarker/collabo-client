@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Logo from "/src/assets/logo-white.svg";
 const Navbar = () => {
   return (
-    <div className="navbar bg-transparent py-8">
+    <div className="navbar bg-transparent py-8 px-2 md:px-20 lg:px-40">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

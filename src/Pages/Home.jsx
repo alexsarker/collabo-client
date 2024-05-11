@@ -6,8 +6,8 @@ import FAQ from "../Components/FAQ";
 const Home = () => {
   return (
     <div>
-      <div className="bg-main pb-44 px-2 md:px-20 lg:px-40">
-        <Navbar></Navbar>
+      <div className="bg-main pb-44">
+      <Navbar></Navbar>
         <Hero></Hero>
       </div>
       <div className="py-20 bg-back">

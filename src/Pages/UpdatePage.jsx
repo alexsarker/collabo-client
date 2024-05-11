@@ -1,14 +1,14 @@
 import Navbar from "../Shared/Navbar";
 
-const CreatePage = () => {
+const UpdatePage = () => {
   return (
     <div className="bg-back">
       <Navbar></Navbar>
       <div className="max-w-[700px] text-center mx-auto pt-6">
-        <h2 className=" pb-5 text-5xl font-bold">Create Assignment</h2>
+        <h2 className=" pb-5 text-5xl font-bold">Update Assignment</h2>
         <p>
-          Empower your learning community by creating engaging assignments for
-          collaboration and skill-building.
+          Modify assignment details to keep your tasks relevant and engaging for
+          your study group.
         </p>
       </div>
 
@@ -110,7 +110,7 @@ const CreatePage = () => {
               {/* button */}
               <div className="form-control py-6 lg:col-span-2">
                 <button className="btn bg-button w-full text-white hover:bg-[#31308F]">
-                  Create
+                  Update
                 </button>
               </div>
             </form>
@@ -121,4 +121,4 @@ const CreatePage = () => {
   );
 };
 
-export default CreatePage;
+export default UpdatePage;
