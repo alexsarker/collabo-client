@@ -10,6 +10,7 @@ import Register from "./Pages/Register";
 import CreatePage from "./Pages/CreatePage";
 import UpdatePage from "./Pages/UpdatePage";
 import SubmitPage from "./Pages/SubmitPage";
+import GradingPage from "./Pages/GradingPage";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/submitPage",
         element: <SubmitPage />,
+      },
+      {
+        path: "/gradePage",
+        element: <GradingPage />,
       },
     ],
   },
