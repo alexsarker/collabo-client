@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "/src/assets/logo-white.svg";
 const Navbar = () => {
   return (
@@ -32,7 +33,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <img src={Logo} alt="logo" />
+        <Link to="/">
+          <img src={Logo} alt="logo" />
+        </Link>
       </div>
       <div className="navbar-end">
         <ul className="menu menu-horizontal px-2 hidden lg:block">
@@ -46,9 +49,13 @@ const Navbar = () => {
           </div>
         </ul>
 
-        
         {/* button */}
-        <a className="btn bg-button border-none px-8 hover:bg-[#070D1E]">Login</a>
+        <Link
+          to="/login"
+          className="btn bg-button border-none px-8 hover:bg-[#31308F]"
+        >
+          Login
+        </Link>
       </div>
     </div>
   );
