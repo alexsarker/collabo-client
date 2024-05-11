@@ -9,5 +9,17 @@ body {
 }
 
 .bg-main {
- background-color: #161c2d;
+  background-color: #161c2d;
+}
+
+.bg-button {
+  background-color: #5c5bba;
+  color: white;
+}
+.bg-back {
+  background-color: #F7F7FC;
+}
+
+.text-p {
+  color: #adb0b5;
 }
