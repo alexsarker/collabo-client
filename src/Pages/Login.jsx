@@ -82,7 +82,7 @@ const Login = () => {
         <div className="hero-content text-center">
           <div className="max-w-2xl">
             <div className="hero pt-10 pb-24">
-              <div className="py-12 px-16 border bg-white shadow-md rounded-xl">
+              <div className="py-12 px-16 border bg-theme-moon shadow-md rounded-xl">
                 <div className="text-left pb-8">
                   <h1 className="text-4xl font-medium pb-4">Welcome back!</h1>
                   <p className="font-medium text-sec">

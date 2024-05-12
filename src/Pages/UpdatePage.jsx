@@ -14,7 +14,7 @@ const UpdatePage = () => {
 
       <div className="hero">
         <div className="hero-content text-center mt-6 mb-24">
-          <div className="card py-12 px-16 bg-white shadow-sm rounded-xl">
+          <div className="card py-12 px-16 bg-theme-moon shadow-sm rounded-xl">
             <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-72 md:w-[500px] lg:w-[800px]">
               {/* Title */}
               <div className="form-control">

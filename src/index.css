@@ -11,19 +11,40 @@ body {
 .bg-main {
   background-color: #161c2d;
 }
+[data-theme="dark"] .bg-main {
+  background-color: #191919;
+}
 
 .bg-button {
   background-color: #5c5bba;
   color: white;
 }
+
 .bg-back {
-  background-color: #F7F7FC;
+  background-color: #f7f7fc;
+}
+[data-theme="dark"] .bg-back {
+  background-color: black;
 }
 
 .text-sec {
-  color: #5C5BBA;
+  color: #5c5bba;
 }
 
 .text-p {
   color: #adb0b5;
+}
+
+.bg-theme-moon {
+  background-color: white;
+}
+[data-theme="dark"] .bg-theme-moon {
+  background-color: #ffffff20;
+}
+
+.text-label {
+  color: #161C2D;
+}
+[data-theme="dark"] .text-label {
+  color: white;
 }

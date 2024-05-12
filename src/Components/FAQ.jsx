@@ -13,7 +13,7 @@ const FAQ = () => {
 
       <div className="mt-20 flex justify-center">
         <div className="max-w-[800px]">
-          <div className="collapse collapse-arrow bg-white p-4 mb-4">
+          <div className="collapse collapse-arrow bg-theme-moon p-4 mb-4">
             <input type="radio" name="my-accordion-2" defaultChecked />
             <div className="collapse-title text-lg font-bold">
               How do I get started with Collabo?
@@ -27,7 +27,7 @@ const FAQ = () => {
               </p>
             </div>
           </div>
-          <div className="collapse collapse-arrow bg-white p-4 mb-4">
+          <div className="collapse collapse-arrow bg-theme-moon p-4 mb-4">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-lg font-bold">
               Can I create assignments for specific groups of friends?
@@ -40,7 +40,7 @@ const FAQ = () => {
               </p>
             </div>
           </div>
-          <div className="collapse collapse-arrow bg-white p-4 mb-4">
+          <div className="collapse collapse-arrow bg-theme-moon p-4 mb-4">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-lg font-bold">
               Is Collabo platform secure?
@@ -53,7 +53,7 @@ const FAQ = () => {
               </p>
             </div>
           </div>
-          <div className="collapse collapse-arrow bg-white p-4 mb-4">
+          <div className="collapse collapse-arrow bg-theme-moon p-4 mb-4">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-lg font-bold">
               How does assignment grading work on Collabo?
@@ -67,7 +67,7 @@ const FAQ = () => {
               </p>
             </div>
           </div>
-          <div className="collapse collapse-arrow bg-white p-4 mb-4">
+          <div className="collapse collapse-arrow bg-theme-moon p-4 mb-4">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title text-lg font-bold">
               What if I encounter technical issues or need assistance?

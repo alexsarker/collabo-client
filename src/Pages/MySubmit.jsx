@@ -14,11 +14,11 @@ const MySubmit = () => {
       </div>
 
       <div className="container mx-auto py-24">
-        <div className="overflow-x-auto p-10 bg-white rounded-3xl">
+        <div className="overflow-x-auto p-10 bg-theme-moon rounded-3xl">
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="text-base text-[#161C2D]">
+              <tr className="text-base text-label">
                 <th>Assignment</th>
                 <th>Total Marks</th>
                 <th>Obtained Marks</th>

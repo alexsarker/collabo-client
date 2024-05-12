@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
@@ -34,11 +35,20 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const updateUserProfile = (name, imageURL) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: imageURL,
+    });
+  };
+
   const googleUser = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   const githubUser = () => {
+    setLoading(true);
     return signInWithPopup(auth, githubProvider);
   };
 
@@ -54,10 +64,11 @@ const AuthProvider = ({ children }) => {
     });
     return () => unSubscribe();
   }, []);
+  console.log(user);
 
   if (loading) {
     return (
-      <div className="flex justify-center my-48">
+      <div className="flex justify-center my-64">
         <div className="w-48 mx-auto">
           <Lottie animationData={SpinningCircles} />
         </div>
@@ -72,6 +83,7 @@ const AuthProvider = ({ children }) => {
     signUser,
     googleUser,
     githubUser,
+    updateUserProfile,
     logOut,
   };
 

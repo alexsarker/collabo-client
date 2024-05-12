@@ -15,11 +15,11 @@ const Pending = () => {
       </div>
 
       <div className="container mx-auto py-24">
-        <div className="overflow-x-auto p-10 bg-white rounded-3xl">
+        <div className="overflow-x-auto p-10 bg-theme-moon rounded-3xl">
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="text-base text-[#161C2D]">
+              <tr className="text-base text-label">
                 <th>Assignment</th>
                 <th>Total Marks</th>
                 <th>Examine Name</th>
@@ -64,7 +64,7 @@ const Pending = () => {
         </div>
         <Link
           to="/"
-          className="btn bg-white border-none px-10 hover:bg-[#31308F] hover:text-white mt-4"
+          className="btn bg-theme-moon border-none px-10 hover:bg-[#31308F] hover:text-white mt-4"
         >
           Continue Checking
         </Link>

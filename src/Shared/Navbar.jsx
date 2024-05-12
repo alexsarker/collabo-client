@@ -1,10 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "/src/assets/logo-white.svg";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Controller/AuthProvider";
 import { Tooltip } from "react-tooltip";
+import toast, { Toaster } from "react-hot-toast";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
+  const logOutHandler = () => {
+    logOut()
+      .then(() => {
+        navigate(location?.state ? location.state : "/login");
+        toast.success("Logout Successfully");
+      })
+      .catch(() => {
+        toast.error("Something Wrong!");
+      });
+  };
   return (
     <div className="navbar bg-transparent py-8 px-2 md:px-20 lg:px-40">
       <div className="navbar-start">
@@ -91,6 +122,7 @@ const Navbar = () => {
                       type="checkbox"
                       className="theme-controller"
                       value="synthwave"
+                      onChange={handleToggle}
                     />
 
                     {/* sun icon */}
@@ -140,7 +172,7 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <a
                   data-tooltip-id="my-tooltip"
-                  data-tooltip-content={user.email}
+                  data-tooltip-content={user.displayName}
                   data-tooltip-place="bottom"
                 >
                   <img
@@ -162,7 +194,7 @@ const Navbar = () => {
                 <Link to="/aboutUs">About Us</Link>
               </li>
               <li>
-                <a onClick={() => logOut()}>Logout</a>
+                <a onClick={() => logOutHandler()}>Logout</a>
               </li>
             </ul>
           </div>
@@ -174,6 +206,9 @@ const Navbar = () => {
             Login
           </Link>
         )}
+      </div>
+      <div>
+        <Toaster position="top-right" reverseOrder={false} />
       </div>
     </div>
   );

@@ -66,7 +66,7 @@ const GradingPage = () => {
 
       <div className="hero">
         <div className="hero-content text-center my-24">
-          <div className="card p-12 bg-white shadow-sm rounded-xl">
+          <div className="card p-12 bg-theme-moon shadow-sm rounded-xl">
             <h2 className="text-2xl font-bold">Grading Area</h2>
             <form className="space-y-6 gap-6 w-72 md:w-96 lg:w-96">
               {/* Marks */}

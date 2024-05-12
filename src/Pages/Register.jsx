@@ -8,7 +8,8 @@ import { AuthContext } from "../Controller/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, googleUser, githubUser } = useContext(AuthContext);
+  const { createUser, googleUser, githubUser, updateUserProfile } =
+    useContext(AuthContext);
   const [regError, setRegError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
@@ -40,6 +41,7 @@ const Register = () => {
 
     createUser(email, password)
       .then(() => {
+        updateUserProfile(name, imageURL);
         navigate(location?.state ? location.state : "/");
         toast.success("Registered Successfully");
       })
@@ -84,7 +86,7 @@ const Register = () => {
         <div className="hero-content text-center">
           <div className="max-w-2xl">
             <div className="hero pb-24">
-              <div className="py-12 px-16 border bg-white shadow-md rounded-xl">
+              <div className="py-12 px-16 border bg-theme-moon shadow-md rounded-xl">
                 <div className="text-left pb-4">
                   <h1 className="text-4xl font-medium pb-4">Get Started Now</h1>
                 </div>
