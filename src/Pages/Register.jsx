@@ -2,8 +2,38 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import Navbar from "../Shared/Navbar";
 import { Link } from "react-router-dom";
 import Dashboard from "/src/assets/Dashboard Login.png";
+import { useState } from "react";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 const Register = () => {
+  const [regError, setRegError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    const name = form.name.value;
+    const imageURL = form.imageURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(name, imageURL, email, password);
+
+    setRegError("");
+
+    if (password.length < 6) {
+      setRegError("Password should be at least 6 characters or longer.");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegError("Password should be at least one Uppercase character.");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      setRegError("Password should be at least one Lowercase character.");
+      return;
+    }
+  };
+
   return (
     <div
       style={{
@@ -12,9 +42,7 @@ const Register = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="px-2 md:px-20 lg:px-40">
-        <Navbar></Navbar>
-      </div>
+      <Navbar></Navbar>
 
       <div className="hero">
         <div className="hero-content text-center">
@@ -25,7 +53,7 @@ const Register = () => {
                   <h1 className="text-4xl font-medium pb-4">Get Started Now</h1>
                 </div>
                 <div className="card w-full">
-                  <form>
+                  <form onSubmit={handleRegister}>
                     {/* Full Name */}
                     <div className="form-control">
                       <label className="label">
@@ -80,19 +108,18 @@ const Register = () => {
                       </label>
                       <label className="input input-bordered flex items-center gap-2">
                         <input
-                          type="password"
-                          // type={showPassword ? "text" : "password"}
+                          type={showPassword ? "text" : "password"}
                           name="password"
                           className="grow text-sm"
                           placeholder="New Password"
                         />
-                        {/* <span onClick={() => setShowPassword(!showPassword)}>
+                        <span onClick={() => setShowPassword(!showPassword)}>
                         {showPassword ? (
                           <IoEyeOffOutline className="text-xl" />
                         ) : (
                           <IoEyeOutline className="text-xl" />
                         )}
-                      </span> */}
+                      </span>
                       </label>
                     </div>
 
@@ -135,9 +162,9 @@ const Register = () => {
                     </Link>
                   </p>
                 </div>
-                {/* {regError && (
-                <p className="text-red-700 pt-4 text-center">{regError}</p>
-              )} */}
+                {regError && (
+                  <p className="text-red-700 pt-4 text-center">{regError}</p>
+                )}
               </div>
             </div>
           </div>

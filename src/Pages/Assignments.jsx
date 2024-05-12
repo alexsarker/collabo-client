@@ -33,7 +33,7 @@ const Assignments = () => {
       </div>
 
       <div className="container mx-auto py-24">
-        <Link className="card py-4 w-72 bg-base-100 shadow-sm">
+        <Link className="card pt-4 w-72 bg-base-100 shadow-sm">
           <figure>
             <img
               src="/src/assets/img2.png"

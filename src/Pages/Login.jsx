@@ -2,8 +2,35 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import Navbar from "../Shared/Navbar";
 import { Link } from "react-router-dom";
 import Dashboard from "/src/assets/Dashboard Login.png";
+import { useState } from "react";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 const Login = () => {
+  const [regError, setRegError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(email, password);
+
+    setRegError("");
+
+    if (password.length < 6) {
+      setRegError("Password should be at least 6 characters or longer.");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegError("Password should be at least one Uppercase character.");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      setRegError("Password should be at least one Lowercase character.");
+      return;
+    }
+  };
   return (
     <div
       style={{
@@ -12,9 +39,7 @@ const Login = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="px-2 md:px-20 lg:px-40">
-        <Navbar></Navbar>
-      </div>
+      <Navbar></Navbar>
 
       <div className="hero">
         <div className="hero-content text-center">
@@ -28,7 +53,7 @@ const Login = () => {
                   </p>
                 </div>
                 <div className="card w-full">
-                  <form>
+                  <form onSubmit={handleLogin}>
                     {/* Email */}
                     <div className="form-control">
                       <label className="label">
@@ -53,19 +78,18 @@ const Login = () => {
                       </label>
                       <label className="input input-bordered flex items-center gap-2">
                         <input
-                          type="password"
-                          // type={showPassword ? "text" : "password"}
+                          type={showPassword ? "text" : "password"}
                           name="password"
                           className="grow text-sm"
                           placeholder="Password"
                         />
-                        {/* <span onClick={() => setShowPassword(!showPassword)}>
-                        {showPassword ? (
-                          <IoEyeOffOutline className="text-xl" />
-                        ) : (
-                          <IoEyeOutline className="text-xl" />
-                        )}
-                      </span> */}
+                        <span onClick={() => setShowPassword(!showPassword)}>
+                          {showPassword ? (
+                            <IoEyeOffOutline className="text-xl" />
+                          ) : (
+                            <IoEyeOutline className="text-xl" />
+                          )}
+                        </span>
                       </label>
                       <label className="label">
                         <a
@@ -116,9 +140,9 @@ const Login = () => {
                     </Link>
                   </p>
                 </div>
-                {/* {regError && (
+                {regError && (
                 <p className="text-red-700 pt-4 text-center">{regError}</p>
-              )} */}
+              )}
               </div>
             </div>
           </div>
