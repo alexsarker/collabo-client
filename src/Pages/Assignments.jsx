@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
-import { RxUpdate } from "react-icons/rx";
-import { AiOutlineDelete } from "react-icons/ai";
 
 const Assignments = () => {
   return (
@@ -35,7 +33,7 @@ const Assignments = () => {
       </div>
 
       <div className="container mx-auto py-24">
-        <div className="card p-4 w-80 bg-base-100 shadow-sm">
+        <Link className="card py-4 w-72 bg-base-100 shadow-sm">
           <figure>
             <img
               src="/src/assets/img2.png"
@@ -52,23 +50,32 @@ const Assignments = () => {
               Marks: <span>75%</span>
             </p>
             <div className="card-actions pt-4 items-center justify-between">
-              <Link
-                to="/"
-                className="btn bg-button border-none px-10 hover:bg-[#31308F]"
-              >
-                View
-              </Link>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center justify-between gap-2">
+                <Link
+                  to="/"
+                  className="btn btn-outline border border-[#31308F] text-sec px-6 hover:bg-[#31308F]"
+                >
+                  Delete
+                </Link>
+                <Link
+                  to="/"
+                  className="btn bg-button border-none px-6 hover:bg-[#31308F]"
+                >
+                  Update
+                </Link>
+              </div>
+
+              {/* <div className="flex items-center gap-1">
                 <Link>
                   <RxUpdate className="btn text-5xl bg-transparent text-[#1082E9] p-3 border border-[#1082E9] rounded-lg hover:bg-[#1082E9] hover:text-white hover:border-none" />
                 </Link>
                 <Link>
                   <AiOutlineDelete className="btn text-5xl bg-transparent text-[#F64B4B] p-3 border border-[#F64B4B] rounded-lg hover:bg-[#F64B4B] hover:text-white hover:border-none" />
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );
