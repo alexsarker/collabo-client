@@ -26,7 +26,7 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Assignments</a>
+              <Link to="/assignments">Assignments</Link>
             </li>
             <li>
               <a>About Us</a>
@@ -41,7 +41,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-2 hidden lg:block">
           <div className="flex">
             <li>
-              <a className="text-white mr-8">Assignments</a>
+              <Link to="/assignments" className="text-white mr-8">
+                Assignments
+              </Link>
             </li>
             <li>
               <a className="text-white mr-8">About Us</a>

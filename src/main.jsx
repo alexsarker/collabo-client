@@ -11,6 +11,9 @@ import CreatePage from "./Pages/CreatePage";
 import UpdatePage from "./Pages/UpdatePage";
 import SubmitPage from "./Pages/SubmitPage";
 import GradingPage from "./Pages/GradingPage";
+import Assignments from "./Pages/Assignments";
+import AssignmentDetail from "./Pages/AssignmentDetail";
+import MySubmit from "./Pages/MySubmit";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,18 @@ const router = createBrowserRouter([
       {
         path: "/gradePage",
         element: <GradingPage />,
+      },
+      {
+        path: "/assignments",
+        element: <Assignments />,
+      },
+      {
+        path: "/detail",
+        element: <AssignmentDetail />,
+      },
+      {
+        path: "/mySubmitted",
+        element: <MySubmit />,
       },
     ],
   },
