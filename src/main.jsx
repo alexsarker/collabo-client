@@ -14,6 +14,7 @@ import GradingPage from "./Pages/GradingPage";
 import Assignments from "./Pages/Assignments";
 import AssignmentDetail from "./Pages/AssignmentDetail";
 import MySubmit from "./Pages/MySubmit";
+import Pending from "./Pages/Pending";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/mySubmitted",
         element: <MySubmit />,
+      },
+      {
+        path: "/pending",
+        element: <Pending />,
       },
     ],
   },
