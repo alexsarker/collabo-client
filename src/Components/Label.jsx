@@ -6,7 +6,7 @@ import Img5 from "/src/assets/Quizlet_Logo logo.png";
 
 const Label = () => {
   return (
-    <div className="flex md:justify-evenly lg:justify-evenly border-b-2 pb-16">
+    <div className="flex flex-wrap justify-center md:justify-evenly lg:justify-evenly gap-8 lg:gap-0 border-b-2 pb-16">
       <img src={Img1} className="max-w-52 max-h-10" />
       <img src={Img2} className="max-w-52 max-h-10" />
       <img src={Img3} className="max-w-52 max-h-10" />

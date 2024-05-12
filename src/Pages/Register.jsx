@@ -1,13 +1,18 @@
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Navbar from "../Shared/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Dashboard from "/src/assets/Dashboard Login.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { AuthContext } from "../Controller/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
+  const { createUser, googleUser, githubUser } = useContext(AuthContext);
   const [regError, setRegError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -32,6 +37,37 @@ const Register = () => {
       setRegError("Password should be at least one Lowercase character.");
       return;
     }
+
+    createUser(email, password)
+      .then(() => {
+        navigate(location?.state ? location.state : "/");
+        toast.success("Registered Successfully");
+      })
+      .catch(() => {
+        toast.error("Already Email Exist!");
+      });
+  };
+
+  const googleHandler = () => {
+    googleUser()
+      .then(() => {
+        navigate(location?.state ? location.state : "/");
+        toast.success("Registered Successfully");
+      })
+      .catch(() => {
+        toast.error("Already Email Exist!");
+      });
+  };
+
+  const githubHandler = () => {
+    githubUser()
+      .then(() => {
+        navigate(location?.state ? location.state : "/");
+        toast.success("Registered Successfully");
+      })
+      .catch(() => {
+        toast.error("Already Email Exist!");
+      });
   };
 
   return (
@@ -114,12 +150,12 @@ const Register = () => {
                           placeholder="New Password"
                         />
                         <span onClick={() => setShowPassword(!showPassword)}>
-                        {showPassword ? (
-                          <IoEyeOffOutline className="text-xl" />
-                        ) : (
-                          <IoEyeOutline className="text-xl" />
-                        )}
-                      </span>
+                          {showPassword ? (
+                            <IoEyeOffOutline className="text-xl" />
+                          ) : (
+                            <IoEyeOutline className="text-xl" />
+                          )}
+                        </span>
                       </label>
                     </div>
 
@@ -136,7 +172,7 @@ const Register = () => {
                   {/* more button */}
                   <div className="flex flex-col lg:flex-row items-center gap-6">
                     <button
-                      // onClick={() => handleGoogle()}
+                      onClick={() => googleHandler()}
                       className="btn flex items-center gap-2 rounded-xl hover:bg-[#5c5bba] hover:text-white"
                     >
                       <FaGoogle />
@@ -144,7 +180,7 @@ const Register = () => {
                     </button>
 
                     <button
-                      // onClick={() => handleGithub()}
+                      onClick={() => githubHandler()}
                       className="btn flex items-center gap-2 rounded-xl hover:bg-[#5c5bba] hover:text-white"
                     >
                       <FaGithub />
@@ -169,6 +205,9 @@ const Register = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster position="top-right" reverseOrder={false} />
       </div>
     </div>
   );

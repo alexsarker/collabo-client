@@ -1,13 +1,18 @@
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Navbar from "../Shared/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Dashboard from "/src/assets/Dashboard Login.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { AuthContext } from "../Controller/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
+  const { signUser, googleUser, githubUser } = useContext(AuthContext);
   const [regError, setRegError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -30,7 +35,39 @@ const Login = () => {
       setRegError("Password should be at least one Lowercase character.");
       return;
     }
+
+    signUser(email, password)
+      .then(() => {
+        navigate(location?.state ? location.state : "/");
+        toast.success("You're in");
+      })
+      .catch(() => {
+        toast.error("Something Wrong!");
+      });
   };
+
+  const googleHandler = () => {
+    googleUser()
+      .then(() => {
+        navigate(location?.state ? location.state : "/");
+        toast.success("Registered Successfully");
+      })
+      .catch(() => {
+        toast.error("Already Email Exist!");
+      });
+  };
+
+  const githubHandler = () => {
+    githubUser()
+      .then(() => {
+        navigate(location?.state ? location.state : "/");
+        toast.success("Registered Successfully");
+      })
+      .catch(() => {
+        toast.error("Already Email Exist!");
+      });
+  };
+
   return (
     <div
       style={{
@@ -114,7 +151,7 @@ const Login = () => {
                   {/* more button */}
                   <div className="flex flex-col lg:flex-row items-center gap-6">
                     <button
-                      // onClick={() => handleGoogle()}
+                      onClick={() => googleHandler()}
                       className="btn flex items-center gap-2 rounded-xl hover:bg-[#5c5bba] hover:text-white"
                     >
                       <FaGoogle />
@@ -122,7 +159,7 @@ const Login = () => {
                     </button>
 
                     <button
-                      // onClick={() => handleGithub()}
+                      onClick={() => githubHandler()}
                       className="btn flex items-center gap-2 rounded-xl hover:bg-[#5c5bba] hover:text-white"
                     >
                       <FaGithub />
@@ -141,12 +178,15 @@ const Login = () => {
                   </p>
                 </div>
                 {regError && (
-                <p className="text-red-700 pt-4 text-center">{regError}</p>
-              )}
+                  <p className="text-red-700 pt-4 text-center">{regError}</p>
+                )}
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster position="top-right" reverseOrder={false} />
       </div>
     </div>
   );

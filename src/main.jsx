@@ -13,8 +13,10 @@ import SubmitPage from "./Pages/SubmitPage";
 import GradingPage from "./Pages/GradingPage";
 import Assignments from "./Pages/Assignments";
 import AssignmentDetail from "./Pages/AssignmentDetail";
+import AboutUs from "./Pages/AboutUs";
 import MySubmit from "./Pages/MySubmit";
 import Pending from "./Pages/Pending";
+import AuthProvider from "./Controller/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -59,12 +61,16 @@ const router = createBrowserRouter([
         element: <AssignmentDetail />,
       },
       {
-        path: "/mySubmitted",
+        path: "/mySubmit",
         element: <MySubmit />,
       },
       {
         path: "/pending",
         element: <Pending />,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs />,
       },
     ],
   },
@@ -72,6 +78,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
