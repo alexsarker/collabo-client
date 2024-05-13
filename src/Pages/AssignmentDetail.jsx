@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import Navbar from "../Shared/Navbar";
+import NavLabel from "../Shared/NavLabel";
 
 const AssignmentDetail = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      <NavLabel></NavLabel>
       <div className="max-w-[1200px] mx-auto pt-6">
         <img
           src="/src/assets/PastedGraphic-1-636x358 1.png"

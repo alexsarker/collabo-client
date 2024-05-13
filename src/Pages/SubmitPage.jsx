@@ -1,9 +1,9 @@
-import Navbar from "../Shared/Navbar";
+import NavLabel from "../Shared/NavLabel";
 
 const SubmitPage = () => {
   return (
     <div className="bg-back">
-      <Navbar></Navbar>
+      <NavLabel></NavLabel>
       <div className="max-w-[700px] text-center mx-auto pt-6">
         <h2 className=" pb-5 text-5xl font-bold">Submit Assignment</h2>
         <p>

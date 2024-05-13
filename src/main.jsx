@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./Controller/Root";
+import PrivatePage from "./Controller/PrivatePage";
 import ErrorPage from "./Pages/ErrorPage";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/createPage",
-        element: <CreatePage />,
+        element: (
+          <PrivatePage>
+            <CreatePage />
+          </PrivatePage>
+        ),
       },
       {
         path: "/updatePage",
@@ -62,11 +67,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/mySubmit",
-        element: <MySubmit />,
+        element: (
+          <PrivatePage>
+            <MySubmit />
+          </PrivatePage>
+        ),
       },
       {
         path: "/pending",
-        element: <Pending />,
+        element: (
+          <PrivatePage>
+            <Pending />
+          </PrivatePage>
+        ),
       },
       {
         path: "/aboutUs",

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import Navbar from "../Shared/Navbar";
+import NavLabel from "../Shared/NavLabel";
+
 
 const Assignments = () => {
   return (
     <div className="bg-back">
-      <Navbar></Navbar>
+      <NavLabel></NavLabel>
       <div className="max-w-[700px] text-center mx-auto pt-6">
         <h2 className=" pb-5 text-5xl font-bold">Explore Assignments</h2>
         <p>
