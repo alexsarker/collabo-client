@@ -1,6 +1,55 @@
+import { useContext } from "react";
 import NavLabel from "../Shared/NavLabel";
+import { AuthContext } from "../Controller/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const CreatePage = () => {
+  const { user } = useContext(AuthContext);
+
+  const createHandle = (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    const title = form.title.value;
+    const totalMarks = form.totalMarks.value;
+    const dueDate = form.date.value;
+    const level = form.level.value;
+    const thumbnailURL = form.thumbnailURL.value;
+    const description = form.description.value;
+    const email = user.email;
+    const name = user.displayName;
+
+    const createData = {
+      title,
+      totalMarks,
+      dueDate,
+      level,
+      thumbnailURL,
+      description,
+      name,
+      email,
+    };
+    console.log(createData);
+
+    fetch("http://localhost:5000/data", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(createData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          toast.success("Created Successfully");
+          form.reset();
+        }
+      })
+      .catch(() => {
+        toast.error("Not Created");
+      });
+  };
   return (
     <div className="bg-back">
       <NavLabel></NavLabel>
@@ -15,7 +64,10 @@ const CreatePage = () => {
       <div className="hero">
         <div className="hero-content text-center mt-6 mb-24">
           <div className="card py-12 px-16 bg-theme-moon shadow-sm rounded-xl">
-            <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-72 md:w-[500px] lg:w-[800px]">
+            <form
+              onSubmit={createHandle}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-72 md:w-[500px] lg:w-[800px]"
+            >
               {/* Title */}
               <div className="form-control">
                 <label className="label">
@@ -69,7 +121,7 @@ const CreatePage = () => {
                   </span>
                 </div>
                 <select name="level" className="select select-bordered">
-                  <option disabled selected>
+                  <option disabled defaultValue="">
                     Select
                   </option>
                   <option>Easy</option>
@@ -116,6 +168,9 @@ const CreatePage = () => {
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster position="top-right" reverseOrder={false} />
       </div>
     </div>
   );
