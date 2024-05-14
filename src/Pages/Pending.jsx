@@ -14,8 +14,6 @@ const Pending = () => {
     },
   });
 
-  console.log(data);
-
   return (
     <div className="bg-back">
       <NavLabel></NavLabel>
@@ -44,8 +42,9 @@ const Pending = () => {
             {data?.map((pendingData) => (
               <tbody key={pendingData._id}>
                 {/* row */}
-                {pendingData.status === "Pending" &&
-                  pendingData.submitEmail !== user.email && (
+                {!pendingData.marks &&
+                  pendingData.submitEmail !== user.email &&
+                  !pendingData.marks && (
                     <tr className="text-base">
                       <td>
                         <div className="flex items-center gap-3 py-2">

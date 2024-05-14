@@ -19,7 +19,6 @@ const SubmitPage = () => {
     const submitName = user.displayName;
     const submitEmail = user.email;
     const submitDate = format(new Date(), "dd-MM-yyyy");
-    const status = "Pending";
     const submitData = {
       title,
       level,
@@ -31,7 +30,6 @@ const SubmitPage = () => {
       submitName,
       submitEmail,
       submitDate,
-      status,
     };
 
     console.log(submitData);
@@ -47,8 +45,8 @@ const SubmitPage = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          toast.success("Submitted Successfully");
           form.reset();
+          toast.success("Submitted Successfully");
         }
       })
       .catch(() => {

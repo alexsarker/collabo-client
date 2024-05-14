@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import NavLabel from "../Shared/NavLabel";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
@@ -13,8 +12,6 @@ const MySubmit = () => {
       return res.json();
     },
   });
-
-  console.log(data);
 
   return (
     <div className="bg-back">
@@ -42,7 +39,7 @@ const MySubmit = () => {
             {data?.map((submitData) => (
               <tbody key={submitData._id}>
                 {/* row */}
-                {user.email === submitData.submitEmail && (
+                {user.email === submitData?.submitEmail && (
                   <tr className="text-base">
                     <td>
                       <div className="flex items-center gap-3 py-2">
@@ -56,22 +53,45 @@ const MySubmit = () => {
                         </div>
                         <div>
                           <div className="font-bold">{submitData.title}</div>
-                          <div className="text-sm opacity-50">{submitData.submitDate}</div>
+                          <div className="text-sm opacity-50">
+                            {submitData.submitDate}
+                          </div>
                         </div>
                       </div>
                     </td>
-                    <td>{submitData.totalMarks}</td>
-                    <td>65</td>
-                    {/* <td className="text-[#68D585]">Completed</td> */}
-                    <td className="text-[#F64B4B]">{submitData.status}</td>
-                    <td className="text-center">
-                      <Link
-                        to="/"
-                        className="btn bg-button border-none px-10 hover:bg-[#31308F]"
-                      >
-                        Feedback
-                      </Link>
-                    </td>
+                    <td>{submitData?.totalMarks}</td>
+                    <td>{submitData?.marks}</td>
+                    {submitData.marks ? (
+                      <td className=" text-[#68D585]">Completed</td>
+                    ) : (
+                      <td className="text-[#F64B4B]">Pending</td>
+                    )}
+
+                    {submitData?.marks && (
+                      <td className="text-center">
+                        <button
+                          className="btn bg-button border-none px-10 hover:bg-[#31308F]"
+                          onClick={() =>
+                            document.getElementById("my_modal_1").showModal()
+                          }
+                        >
+                          Feedback
+                        </button>
+                        <dialog id="my_modal_1" className="modal">
+                          <div className="modal-box">
+                            <h3 className="font-bold text-lg">Feedback</h3>
+                            <p className="py-4">{submitData.feedback}</p>
+                            <div className="modal-action">
+                              <form method="dialog">
+                                <button className="btn  bg-button border-none hover:bg-[#31308F]">
+                                  Close
+                                </button>
+                              </form>
+                            </div>
+                          </div>
+                        </dialog>
+                      </td>
+                    )}
                   </tr>
                 )}
               </tbody>

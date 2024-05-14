@@ -1,25 +1,47 @@
 import { FaUser } from "react-icons/fa";
 import NavLabel from "../Shared/NavLabel";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
+import toast, { Toaster } from "react-hot-toast";
 const GradingPage = () => {
   const data = useLoaderData();
+  const navigate = useNavigate();
   const {
-    _id,
-    title,
-    level,
     totalMarks,
-    thumbnailURL,
-    description,
     pdfLink,
     quickNote,
     submitName,
     submitEmail,
-    status,
     submitDate,
   } = data;
+
+  const handleGrade = (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    const marksData = form.marks.value;
+    const feedbackData = form.feedback.value;
+
+    fetch(`http://localhost:5000/answers/${data._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ marks: marksData, feedback: feedbackData }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        form.reset();
+        navigate("/pending");
+        toast.success("Submitted Successfully");
+      })
+      .catch((error) => {
+        toast.error("Error:", error);
+      });
+  };
 
   return (
     <div className="bg-back">
@@ -50,12 +72,12 @@ const GradingPage = () => {
         </div>
         <hr className="my-12" />
         <div>
-          <h4 className="text-2xl font-bold pb-4">Submitted PDF/Doc</h4>
+          <h4 className="text-2xl font-bold pb-8">Submitted PDF/Doc</h4>
           <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-            <Viewer fileUrl={pdfLink} />;
+            <Viewer fileUrl={pdfLink} />
           </Worker>
 
-          <p className="text-center">Or</p>
+          <p className="text-center pt-4">Or</p>
           <div className="flex justify-center pt-4">
             <a
               className="btn"
@@ -77,7 +99,10 @@ const GradingPage = () => {
         <div className="hero-content text-center my-24">
           <div className="card p-12 bg-theme-moon shadow-sm rounded-xl">
             <h2 className="text-2xl font-bold">Grading Area</h2>
-            <form className="space-y-6 gap-6 w-72 md:w-96 lg:w-96">
+            <form
+              onSubmit={handleGrade}
+              className="space-y-6 gap-6 w-72 md:w-96 lg:w-96"
+            >
               {/* Marks */}
               <div className="form-control">
                 <label className="label">
@@ -87,6 +112,8 @@ const GradingPage = () => {
                   type="number"
                   name="marks"
                   placeholder="Marks"
+                  max={totalMarks}
+                  min={0}
                   className="input input-bordered text-sm"
                   required
                 />
@@ -102,6 +129,7 @@ const GradingPage = () => {
                   className="textarea textarea-bordered h-24"
                   name="feedback"
                   placeholder="Feedback"
+                  required
                 ></textarea>
               </label>
 
@@ -114,6 +142,9 @@ const GradingPage = () => {
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster position="top-right" reverseOrder={false} />
       </div>
     </div>
   );
