@@ -18,7 +18,7 @@ const SubmitPage = () => {
     const quickNote = form.quickNote.value;
     const submitName = user.displayName;
     const submitEmail = user.email;
-    const submitDate = format(new Date(), "dd-MM-yyyy");
+    const submitDate = format(new Date(), "MM-dd-yyyy");
     const submitData = {
       title,
       level,

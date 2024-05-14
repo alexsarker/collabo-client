@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import NavLabel from "../Shared/NavLabel";
 import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../Controller/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Assignments = () => {
+  const { user } = useContext(AuthContext);
   const [selectedLevel, setSelectedLevel] = useState("");
 
   const { data, isLoading, isError } = useQuery({
@@ -20,6 +23,22 @@ const Assignments = () => {
   const filteredData = selectedLevel
     ? data.filter((assignment) => assignment.level === selectedLevel)
     : data;
+
+  const handleDelete = (_id) => {
+    console.log("delete this-", _id);
+
+    fetch(`http://localhost:5000/data/${_id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          window.location.reload();
+          toast.success("Deleted Successfully");
+        }
+      });
+  };
 
   return (
     <div className="bg-back">
@@ -97,17 +116,47 @@ const Assignments = () => {
                 <div className="card-actions pt-4 items-center justify-between">
                   <div className="flex items-center justify-between gap-6">
                     <Link
-                      to={`/delete/${assignment.id}`}
-                      className="btn btn-outline border border-[#31308F] text-sec px-6 hover:bg-[#31308F]"
-                    >
-                      Delete
-                    </Link>
-                    <Link
-                      to={`/update/${assignment.id}`}
+                      to={`/updatePage/${assignment._id}`}
                       className="btn bg-button border-none px-6 hover:bg-[#31308F]"
                     >
                       Update
                     </Link>
+                    {assignment.email === user.email && (
+                      <>
+                        <button
+                          onClick={() =>
+                            document
+                              .getElementById(`my_modal_1_${assignment._id}`)
+                              .showModal()
+                          }
+                          className="btn btn-outline border border-[#31308F] text-sec px-6 hover:bg-[#31308F]"
+                        >
+                          Delete
+                        </button>
+                        {/* delete dialog */}
+                        <dialog
+                          id={`my_modal_1_${assignment._id}`}
+                          className="modal"
+                        >
+                          <div className="modal-box text-center flex flex-col items-center">
+                            <p className="py-4">
+                              Are you sure want to delete this assignment?
+                            </p>
+                            <div className="modal-action">
+                              <form method="dialog" className="space-x-4">
+                                <button
+                                  onClick={() => handleDelete(assignment._id)}
+                                  className="btn bg-button border-none px-6 hover:bg-[#31308F]"
+                                >
+                                  Confirm
+                                </button>
+                                <button className="btn px-6">Close</button>
+                              </form>
+                            </div>
+                          </div>
+                        </dialog>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -115,6 +164,9 @@ const Assignments = () => {
           ))}
         </div>
       )}
+      <div>
+        <Toaster position="top-right" reverseOrder={false} />
+      </div>
     </div>
   );
 };

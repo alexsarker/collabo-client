@@ -48,8 +48,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/updatePage",
+        path: "/updatePage/:id",
         element: <UpdatePage />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/data/${params.id}`),
       },
       {
         path: "/submitPage/:id",

@@ -3,7 +3,8 @@ import NavLabel from "../Shared/NavLabel";
 
 const AssignmentDetail = () => {
   const data = useLoaderData();
-  const { _id, title, level, totalMarks, thumbnailURL, description } = data;
+  const { _id, title, level, totalMarks, dueDate, thumbnailURL, description } =
+    data;
   return (
     <div>
       <NavLabel />
@@ -11,8 +12,13 @@ const AssignmentDetail = () => {
         <img src={thumbnailURL} alt="cover" className="max-w-2xl mx-auto" />
         <div className="space-y-6 pt-24">
           <h2 className="text-4xl font-bold">{title}</h2>
-          <p className="text-xl italic text-[#ED0066]">Difficulty Level: {level}</p>
-          <p className="text-xl font-semibold text-[#514B78]">Marks: {totalMarks}</p>
+          <p className="text-xl italic text-[#ED0066]">
+            Difficulty Level: {level}
+          </p>
+          <p className="text-xl">Due Date: {dueDate}</p>
+          <p className="text-xl font-semibold text-[#514B78]">
+            Marks: {totalMarks}
+          </p>
           <div className="space-y-6">
             <h4 className="text-xl font-bold text-sec">Description</h4>
             <hr />
