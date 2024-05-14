@@ -58,8 +58,10 @@ const router = createBrowserRouter([
           fetch(`http://localhost:5000/data/${params.id}`),
       },
       {
-        path: "/gradePage",
+        path: "/gradePage/:id",
         element: <GradingPage />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/answers/${params.id}`),
       },
       {
         path: "/assignments",

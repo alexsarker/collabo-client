@@ -1,7 +1,26 @@
 import { FaUser } from "react-icons/fa";
 import NavLabel from "../Shared/NavLabel";
-
+import { useLoaderData } from "react-router-dom";
+import { Worker } from "@react-pdf-viewer/core";
+import { Viewer } from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
 const GradingPage = () => {
+  const data = useLoaderData();
+  const {
+    _id,
+    title,
+    level,
+    totalMarks,
+    thumbnailURL,
+    description,
+    pdfLink,
+    quickNote,
+    submitName,
+    submitEmail,
+    status,
+    submitDate,
+  } = data;
+
   return (
     <div className="bg-back">
       <NavLabel></NavLabel>
@@ -18,49 +37,39 @@ const GradingPage = () => {
           <div className="flex items-center gap-4 text-xl">
             <FaUser className="text-5xl text-sec p-4 rounded-md bg-[#C6C5FE]" />
             <div>
-              <h2 className="text-xl font-bold">Alex Sarker</h2>
-              <small className="italic">aver124@gmail.com</small>
+              <h2 className="text-xl font-bold">{submitName}</h2>
+              <small className="italic">{submitEmail}</small>
             </div>
           </div>
           <div>
             <p className="font-bold">
               Submitted Date:{" "}
-              <span className="text-xl text-[#473BF0]">5/27/15</span>
+              <span className="text-xl text-[#473BF0]">{submitDate}</span>
             </p>
           </div>
         </div>
         <hr className="my-12" />
         <div>
           <h4 className="text-2xl font-bold pb-4">Submitted PDF/Doc</h4>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only
-            five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply
-            dummy text of the printing and typesetting industry. Lorem Ipsum has
-            been the industry standard dummy text ever since the 1500s, when an
-            unknown printer took a galley of type and scrambled it to make a
-            type specimen book. It has survived not only five centuries, but
-            also the leap into electronic typesetting, remaining essentially
-            unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently
-            with desktop publishing software like Aldus PageMaker including
-            versions of Lorem Ipsum.
-          </p>
+          <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+            <Viewer fileUrl={pdfLink} />;
+          </Worker>
+
+          <p className="text-center">Or</p>
+          <div className="flex justify-center pt-4">
+            <a
+              className="btn"
+              href={pdfLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View PDF
+            </a>
+          </div>
         </div>
         <div>
           <h4 className="text-2xl font-bold pb-4">Note from Examinee</h4>
-          <p>
-            By providing a centralized hub for users to track their submitted
-            assignments and receive feedback, Collabo promotes transparency,
-            accountability, and continuous improvement within the study group
-            community.
-          </p>
+          <p>{quickNote}</p>
         </div>
       </div>
 

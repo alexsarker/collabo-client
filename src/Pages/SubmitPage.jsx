@@ -3,12 +3,12 @@ import NavLabel from "../Shared/NavLabel";
 import { useContext } from "react";
 import { AuthContext } from "../Controller/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { format } from "date-fns";
 
 const SubmitPage = () => {
   const { user } = useContext(AuthContext);
   const data = useLoaderData();
   const { title, level, totalMarks, thumbnailURL, description } = data;
-  console.log(data);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,6 +18,8 @@ const SubmitPage = () => {
     const quickNote = form.quickNote.value;
     const submitName = user.displayName;
     const submitEmail = user.email;
+    const submitDate = format(new Date(), "dd-MM-yyyy");
+    const status = "Pending";
     const submitData = {
       title,
       level,
@@ -28,6 +30,8 @@ const SubmitPage = () => {
       quickNote,
       submitName,
       submitEmail,
+      submitDate,
+      status,
     };
 
     console.log(submitData);

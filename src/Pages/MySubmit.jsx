@@ -56,14 +56,14 @@ const MySubmit = () => {
                         </div>
                         <div>
                           <div className="font-bold">{submitData.title}</div>
-                          {/* <div className="text-sm opacity-50">12/04/2024</div> */}
+                          <div className="text-sm opacity-50">{submitData.submitDate}</div>
                         </div>
                       </div>
                     </td>
                     <td>{submitData.totalMarks}</td>
                     <td>65</td>
                     {/* <td className="text-[#68D585]">Completed</td> */}
-                    <td className="text-[#F64B4B]">Pending</td>
+                    <td className="text-[#F64B4B]">{submitData.status}</td>
                     <td className="text-center">
                       <Link
                         to="/"
