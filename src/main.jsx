@@ -52,8 +52,10 @@ const router = createBrowserRouter([
         element: <UpdatePage />,
       },
       {
-        path: "/submitPage",
+        path: "/submitPage/:id",
         element: <SubmitPage />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/data/${params.id}`),
       },
       {
         path: "/gradePage",

@@ -1,6 +1,57 @@
+import { useLoaderData } from "react-router-dom";
 import NavLabel from "../Shared/NavLabel";
+import { useContext } from "react";
+import { AuthContext } from "../Controller/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const SubmitPage = () => {
+  const { user } = useContext(AuthContext);
+  const data = useLoaderData();
+  const { title, level, totalMarks, thumbnailURL, description } = data;
+  console.log(data);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    const pdfLink = form.pdfLink.value;
+    const quickNote = form.quickNote.value;
+    const submitName = user.displayName;
+    const submitEmail = user.email;
+    const submitData = {
+      title,
+      level,
+      totalMarks,
+      thumbnailURL,
+      description,
+      pdfLink,
+      quickNote,
+      submitName,
+      submitEmail,
+    };
+
+    console.log(submitData);
+
+    fetch("http://localhost:5000/answers", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(submitData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          toast.success("Submitted Successfully");
+          form.reset();
+        }
+      })
+      .catch(() => {
+        toast.error("Not Submitted");
+      });
+  };
+
   return (
     <div className="bg-back">
       <NavLabel></NavLabel>
@@ -15,7 +66,11 @@ const SubmitPage = () => {
       <div className="hero">
         <div className="hero-content text-center mt-6 mb-24">
           <div className="card py-12 px-16 bg-theme-moon shadow-sm rounded-xl">
-            <form className="space-y-6 gap-6 w-72 md:w-[500px] lg:w-[800px]">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6 gap-6 w-72 md:w-[500px] lg:w-[800px]"
+            >
+              <h2 className="text-2xl">{title}</h2>
               {/* PDF/Doc Link Submission */}
               <div className="form-control">
                 <label className="label">
@@ -25,7 +80,7 @@ const SubmitPage = () => {
                 </label>
                 <input
                   type="url"
-                  name="link"
+                  name="pdfLink"
                   placeholder="https://"
                   className="input input-bordered text-sm"
                   required
@@ -54,6 +109,9 @@ const SubmitPage = () => {
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster position="top-right" reverseOrder={false} />
       </div>
     </div>
   );

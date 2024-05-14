@@ -3,8 +3,7 @@ import NavLabel from "../Shared/NavLabel";
 
 const AssignmentDetail = () => {
   const data = useLoaderData();
-  const { title, level, totalMarks, thumbnailURL, description } = data;
-
+  const { _id, title, level, totalMarks, thumbnailURL, description } = data;
   return (
     <div>
       <NavLabel />
@@ -22,7 +21,7 @@ const AssignmentDetail = () => {
         </div>
         <div className="pt-12 pb-36">
           <Link
-            to="/"
+            to={`/submitPage/${_id}`}
             className="btn bg-button border-none px-10 hover:bg-[#31308F]"
           >
             Take Assignment
