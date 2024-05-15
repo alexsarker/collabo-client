@@ -14,6 +14,7 @@ import PropTypes from "prop-types";
 import app from "../firebase.config";
 import Lottie from "lottie-react";
 import SpinningCircles from "../Animation - 1715540283661.json";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -57,11 +58,27 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
       setUser(currentUser);
       setLoading(false);
+      console.log(currentUser);
+      if (currentUser) {
+        axios
+          .post("http://localhost:5000/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => console.log("token response", res.data));
+      } else {
+        axios
+          .post("http://localhost:5000/logout", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => console.log("token response", res.data));
+      }
     });
     return () => unSubscribe();
-  }, []);
+  }, [user?.email]);
 
   if (loading) {
     return (

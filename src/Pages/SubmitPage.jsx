@@ -32,8 +32,6 @@ const SubmitPage = () => {
       submitDate,
     };
 
-    console.log(submitData);
-
     fetch("http://localhost:5000/answers", {
       method: "POST",
       headers: {
@@ -42,8 +40,7 @@ const SubmitPage = () => {
       body: JSON.stringify(submitData),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         if (data.insertedId) {
           form.reset();
           toast.success("Submitted Successfully");

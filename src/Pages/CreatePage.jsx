@@ -29,7 +29,6 @@ const CreatePage = () => {
       name,
       email,
     };
-    console.log(createData);
 
     fetch("http://localhost:5000/data", {
       method: "POST",
@@ -40,7 +39,6 @@ const CreatePage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           toast.success("Created Successfully");
           form.reset();

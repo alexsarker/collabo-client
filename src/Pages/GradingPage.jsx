@@ -29,8 +29,7 @@ const GradingPage = () => {
       body: JSON.stringify({ marks: marksData, feedback: feedbackData }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         form.reset();
         navigate("/pending");
         toast.success("Submitted Successfully");

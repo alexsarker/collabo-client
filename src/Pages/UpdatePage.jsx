@@ -26,8 +26,6 @@ const UpdatePage = () => {
       description,
     };
 
-    console.log(updateData);
-
     fetch(`http://localhost:5000/data/${_id}`, {
       method: "PUT",
       headers: {
@@ -37,7 +35,6 @@ const UpdatePage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           form.reset();
           toast.success("Updated Successfully");

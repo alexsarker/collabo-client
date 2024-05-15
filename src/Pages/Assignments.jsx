@@ -12,7 +12,9 @@ const Assignments = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["assignment"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/data");
+      const res = await fetch("http://localhost:5000/data", {
+        credentials: "include",
+      });
       return res.json();
     },
   });
@@ -25,14 +27,11 @@ const Assignments = () => {
     : data;
 
   const handleDelete = (_id) => {
-    console.log("delete this-", _id);
-
     fetch(`http://localhost:5000/data/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.deletedCount > 0) {
           window.location.reload();
           toast.success("Deleted Successfully");
