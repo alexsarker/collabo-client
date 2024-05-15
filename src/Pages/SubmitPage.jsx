@@ -67,10 +67,10 @@ const SubmitPage = () => {
 
       <div className="hero">
         <div className="hero-content text-center mt-6 mb-24">
-          <div className="card py-12 px-16 bg-theme-moon shadow-sm rounded-xl">
+          <div className="card p-12 bg-theme-moon shadow-sm rounded-xl">
             <form
               onSubmit={handleSubmit}
-              className="space-y-6 gap-6 w-72 md:w-[500px] lg:w-[800px]"
+              className="space-y-6 gap-6 md:w-[500px] lg:w-[800px]"
             >
               <h2 className="text-2xl">{title}</h2>
               {/* PDF/Doc Link Submission */}

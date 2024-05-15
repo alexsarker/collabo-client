@@ -2,38 +2,56 @@ import LogoWhite from "/src/assets/logo-white.svg";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-main text-white pt-40 pb-28 px-40">
+      <footer className="footer bg-main text-white pt-20 lg:pt-40 pb-28 px-10 md:px-20 lg:px-40">
         <aside>
-          <img src={LogoWhite} alt="logo-white" />
-          <p className="max-w-96">
+          <img
+            src={LogoWhite}
+            alt="logo-white"
+            className="mx-auto md:mx-0 lg:mx-0"
+          />
+          <p className="max-w-96 text-center md:text-start lg:text-start">
             Collaborate, create, achieve. Join us in fostering a supportive
             learning community where students collaborate on assignments, share
             knowledge, and succeed together.
           </p>
         </aside>
-        <nav>
-          <h6 className="footer-title font-normal">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Development</a>
-          <a className="link link-hover">Advertisement</a>
-          <a className="link link-hover">FAQ</a>
+        <nav className="mx-auto md:mx-0 lg:mx-0">
+          <h6 className="footer-title font-normal mx-auto md:mx-0 lg:mx-0">
+            Services
+          </h6>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">Branding</a>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">Development</a>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">
+            Advertisement
+          </a>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">FAQ</a>
         </nav>
-        <nav>
-          <h6 className="footer-title font-normal">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Products</a>
+        <nav className="mx-auto md:mx-0 lg:mx-0">
+          <h6 className="footer-title font-normal mx-auto md:mx-0 lg:mx-0">
+            Company
+          </h6>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">About us</a>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">Contact</a>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">Products</a>
         </nav>
-        <nav>
-          <h6 className="footer-title font-normal">Legal</h6>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+        <nav className="mx-auto md:mx-0 lg:mx-0">
+          <h6 className="footer-title font-normal mx-auto md:mx-0 lg:mx-0">
+            Legal
+          </h6>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">
+            Terms of use
+          </a>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">
+            Privacy policy
+          </a>
+          <a className="link link-hover mx-auto md:mx-0 lg:mx-0">
+            Cookie policy
+          </a>
         </nav>
       </footer>
       <footer className="footer footer-center pb-20 bg-main text-base-content">
         <aside>
-        <div className="grid grid-flow-col gap-4 text-white pb-6">
+          <div className="grid grid-flow-col gap-4 text-white pb-6">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -9,7 +9,7 @@ const AssignmentDetail = () => {
     <div>
       <NavLabel />
       <div className="max-w-[1200px] mx-auto pt-6">
-        <img src={thumbnailURL} alt="cover" className="max-w-2xl mx-auto" />
+        <img src={thumbnailURL} alt="cover" className="lg:max-w-2xl mx-auto" />
         <div className="space-y-6 pt-24">
           <h2 className="text-4xl font-bold">{title}</h2>
           <p className="text-xl italic text-[#ED0066]">

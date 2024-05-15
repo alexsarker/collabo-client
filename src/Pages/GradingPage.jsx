@@ -1,9 +1,6 @@
 import { FaUser } from "react-icons/fa";
 import NavLabel from "../Shared/NavLabel";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { Worker } from "@react-pdf-viewer/core";
-import { Viewer } from "@react-pdf-viewer/core";
-import "@react-pdf-viewer/core/lib/styles/index.css";
 import toast, { Toaster } from "react-hot-toast";
 const GradingPage = () => {
   const data = useLoaderData();
@@ -73,10 +70,12 @@ const GradingPage = () => {
         <hr className="my-12" />
         <div>
           <h4 className="text-2xl font-bold pb-8">Submitted PDF/Doc</h4>
-          <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-            <Viewer fileUrl={pdfLink} />
-          </Worker>
-
+          <iframe
+            title="PDF Viewer"
+            src={pdfLink}
+            width="100%"
+            height="500px"
+          />
           <p className="text-center pt-4">Or</p>
           <div className="flex justify-center pt-4">
             <a

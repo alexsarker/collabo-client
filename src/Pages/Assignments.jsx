@@ -88,7 +88,7 @@ const Assignments = () => {
           No data available
         </div>
       ) : (
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-24">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-24 justify-items-center">
           {filteredData.map((assignment) => (
             <div
               key={assignment._id}

@@ -63,10 +63,10 @@ const CreatePage = () => {
 
       <div className="hero">
         <div className="hero-content text-center mt-6 mb-24">
-          <div className="card py-12 px-16 bg-theme-moon shadow-sm rounded-xl">
+          <div className="card p-12 bg-theme-moon shadow-sm rounded-xl">
             <form
               onSubmit={createHandle}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-72 md:w-[500px] lg:w-[800px]"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:w-[500px] lg:w-[800px]"
             >
               {/* Title */}
               <div className="form-control">
@@ -130,7 +130,7 @@ const CreatePage = () => {
                 </select>
               </label>
               {/* Thumbnail Image URL */}
-              <div className="form-control lg:col-span-2">
+              <div className="form-control md:col-span-2 lg:col-span-2">
                 <label className="label">
                   <span className="label-text text-base font-bold">
                     Thumbnail URL
@@ -146,7 +146,7 @@ const CreatePage = () => {
                 </label>
               </div>
               {/* Description */}
-              <label className="form-control lg:col-span-2">
+              <label className="form-control md:col-span-2 lg:col-span-2">
                 <div className="label">
                   <span className="label-text text-base font-bold">
                     Description
@@ -160,7 +160,7 @@ const CreatePage = () => {
               </label>
 
               {/* button */}
-              <div className="form-control py-6 lg:col-span-2">
+              <div className="form-control py-6 md:col-span-2 lg:col-span-2">
                 <button className="btn bg-button w-full text-white hover:bg-[#31308F]">
                   Create
                 </button>
