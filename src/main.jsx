@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -51,19 +51,19 @@ const router = createBrowserRouter([
         path: "/updatePage/:id",
         element: <UpdatePage />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/data/${params.id}`),
+          fetch(`https://b9a11-collabo-server.vercel.app/data/${params.id}`),
       },
       {
         path: "/submitPage/:id",
         element: <SubmitPage />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/data/${params.id}`),
+          fetch(`https://b9a11-collabo-server.vercel.app/data/${params.id}`),
       },
       {
         path: "/gradePage/:id",
         element: <GradingPage />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/answers/${params.id}`),
+          fetch(`https://b9a11-collabo-server.vercel.app/answers/${params.id}`),
       },
       {
         path: "/assignments",
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
           </PrivatePage>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/data/${params.id}`),
+          fetch(`https://b9a11-collabo-server.vercel.app/data/${params.id}`),
       },
       {
         path: "/mySubmit",

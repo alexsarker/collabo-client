@@ -30,7 +30,7 @@ const CreatePage = () => {
       email,
     };
 
-    fetch("http://localhost:5000/data", {
+    fetch("https://b9a11-collabo-server.vercel.app/data", {
       method: "POST",
       headers: {
         "content-type": "application/json",

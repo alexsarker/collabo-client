@@ -26,7 +26,7 @@ const UpdatePage = () => {
       description,
     };
 
-    fetch(`http://localhost:5000/data/${_id}`, {
+    fetch(`https://b9a11-collabo-server.vercel.app/data/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

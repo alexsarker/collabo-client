@@ -9,7 +9,9 @@ const Pending = () => {
   const { data } = useQuery({
     queryKey: ["answers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/answers");
+      const res = await fetch(
+        "https://b9a11-collabo-server.vercel.app/answers"
+      );
       return res.json();
     },
   });

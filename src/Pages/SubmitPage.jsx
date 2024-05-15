@@ -32,7 +32,7 @@ const SubmitPage = () => {
       submitDate,
     };
 
-    fetch("http://localhost:5000/answers", {
+    fetch("https://b9a11-collabo-server.vercel.app/answers", {
       method: "POST",
       headers: {
         "content-type": "application/json",

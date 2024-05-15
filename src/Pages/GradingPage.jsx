@@ -21,7 +21,7 @@ const GradingPage = () => {
     const marksData = form.marks.value;
     const feedbackData = form.feedback.value;
 
-    fetch(`http://localhost:5000/answers/${data._id}`, {
+    fetch(`https://b9a11-collabo-server.vercel.app/answers/${data._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

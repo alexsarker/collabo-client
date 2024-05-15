@@ -8,9 +8,12 @@ const MySubmit = () => {
   const { data } = useQuery({
     queryKey: ["answers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/answers", {
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://b9a11-collabo-server.vercel.app/answers",
+        {
+          credentials: "include",
+        }
+      );
       return res.json();
     },
   });

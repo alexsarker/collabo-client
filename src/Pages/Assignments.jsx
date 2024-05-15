@@ -12,7 +12,7 @@ const Assignments = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["assignment"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/data", {
+      const res = await fetch("https://b9a11-collabo-server.vercel.app/data", {
         credentials: "include",
       });
       return res.json();
@@ -27,7 +27,7 @@ const Assignments = () => {
     : data;
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/data/${_id}`, {
+    fetch(`https://b9a11-collabo-server.vercel.app/data/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
