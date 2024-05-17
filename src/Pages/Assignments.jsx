@@ -88,39 +88,39 @@ const Assignments = () => {
         </div>
       ) : (
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-24 justify-items-center">
-          {filteredData.map((assignment) => (
+          {filteredData?.map((assignment) => (
             <div
-              key={assignment._id}
+              key={assignment?._id}
               className="card w-72 bg-base-100 shadow-sm"
             >
               <figure>
                 <img
-                  src={assignment.thumbnailURL}
-                  alt={assignment.title}
+                  src={assignment?.thumbnailURL}
+                  alt={assignment?.title}
                   className="w-full max-h-48"
                 />
               </figure>
               <div className="card-body">
                 <Link to={`/data/${assignment?._id}`}>
                   <h2 className="card-title hover link-hover">
-                    {assignment.title}
+                    {assignment?.title}
                   </h2>
                 </Link>
                 <p>
-                  Difficulty Level: <span>{assignment.level}</span>
+                  Difficulty Level: <span>{assignment?.level}</span>
                 </p>
                 <p className="text-[#1082E9]">
-                  Marks: <span>{assignment.totalMarks}</span>
+                  Marks: <span>{assignment?.totalMarks}</span>
                 </p>
                 <div className="card-actions pt-4 items-center justify-between">
                   <div className="flex items-center justify-between gap-6">
                     <Link
-                      to={`/updatePage/${assignment._id}`}
+                      to={`/updatePage/${assignment?._id}`}
                       className="btn bg-button border-none px-6 hover:bg-[#31308F]"
                     >
                       Update
                     </Link>
-                    {assignment.email === user.email && (
+                    {assignment?.email === user?.email && (
                       <>
                         <button
                           onClick={() =>
@@ -134,7 +134,7 @@ const Assignments = () => {
                         </button>
                         {/* delete dialog */}
                         <dialog
-                          id={`my_modal_1_${assignment._id}`}
+                          id={`my_modal_1_${assignment?._id}`}
                           className="modal"
                         >
                           <div className="modal-box text-center flex flex-col items-center">
@@ -144,7 +144,7 @@ const Assignments = () => {
                             <div className="modal-action">
                               <form method="dialog" className="space-x-4">
                                 <button
-                                  onClick={() => handleDelete(assignment._id)}
+                                  onClick={() => handleDelete(assignment?._id)}
                                   className="btn bg-button border-none px-6 hover:bg-[#31308F]"
                                 >
                                   Confirm

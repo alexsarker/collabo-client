@@ -1,5 +1,6 @@
 import { BsArrowRight } from "react-icons/bs";
 import Img from "/src/assets/Img.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -15,9 +16,9 @@ const Hero = () => {
             Collaborate on projects, share knowledge, and achieve academic
             success together.
           </p>
-          <button className="flex items-center text-xl font-semibold text-[#68D585] gap-4">
+          <Link to="/createPage" className="flex items-center text-xl font-semibold text-[#68D585] gap-4">
             Get Started <BsArrowRight className="text-xl"></BsArrowRight>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

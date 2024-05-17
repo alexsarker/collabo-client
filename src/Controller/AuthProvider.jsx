@@ -75,6 +75,7 @@ const AuthProvider = ({ children }) => {
           }
         );
       }
+      console.log(currentUser);
     });
     return () => unSubscribe();
   }, [user?.email]);

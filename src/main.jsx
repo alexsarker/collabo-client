@@ -49,7 +49,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/updatePage/:id",
-        element: <UpdatePage />,
+        element: (
+          <PrivatePage>
+            <UpdatePage />
+          </PrivatePage>
+        ),
         loader: ({ params }) =>
           fetch(`https://b9a11-collabo-server.vercel.app/data/${params.id}`),
       },
