@@ -16,5 +16,3 @@ Features:
 
 5. Collabo fosters a collaborative learning community where users can interact, share knowledge, and support each other's academic growth.
    
-
- Selected Category: Assignment_category_0001
